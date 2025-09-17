@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIX AI - Your Hedera Development Companion | Hedera Africa Hackathon 2025</title>
+    <meta name="description" content="APIX AI: The world's first AI-powered Hedera development assistant. Build enterprise-grade blockchain applications 10x faster with intelligent code composition, real-time validation, and industry-specific templates.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>APIX AI</span>
+                </div>
+            </div>
+            <div class="nav-menu">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#demo" class="nav-link">Live Demo</a>
+                <a href="#tracks" class="nav-link">Hackathon</a>
+                <a href="#architecture" class="nav-link">Architecture</a>
+                <a href="https://github.com/your-repo/apix-ai" class="nav-link" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="#get-started" class="cta-button">Try APIX AI</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="grid-pattern"></div>
+        </div>
+        
+        <div class="hero-content">
+            
+            <h1 class="hero-title">
+                Build Hedera DApps with
+                <span class="gradient-text">AI Superpowers</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                The world's first AI-powered Hedera development assistant. 
+                Generate enterprise-grade blockchain applications 10x faster with intelligent code composition, 
+                real-time validation, and industry-specific templates.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">10x</div>
+                    <div class="stat-label">Faster Development</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Production Templates</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">AI Models Integrated</div>
+                </div>
+            </div>
+            
+            <div class="hero-actions">
+                <button class="primary-button" onclick="scrollToSection('demo')">
+                    <i class="fas fa-play"></i>
+                    Watch Live Demo
+                </button>
+                <button class="secondary-button" onclick="scrollToSection('get-started')">
+                    <i class="fas fa-download"></i>
+                    Try APIX AI Now
+                </button>
+            </div>
+            
+            <div class="hero-tech-stack">
+                <span class="tech-label">Powered by:</span>
+                <div class="tech-logos">
+                    <div class="tech-item">
+                        <img src="https://docs.hedera.com/img/hedera-logo.svg" alt="Hedera" />
+                        <span>Hedera</span>
+                    </div>
+                    <div class="tech-item">
+                        <div class="gpt-logo">
+                            <div class="petal-1"></div>
+                            <div class="petal-2"></div>
+                            <div class="petal-3"></div>
+                        </div>
+                        <span>OpenAI GPT-4</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-robot"></i>
+                        <span>Claude 3.5</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-node-js"></i>
+                        <span>TypeScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Statement -->
+    <section class="problem-statement">
+        <div class="container">
+            <div class="section-header">
+                <h2>The African Developer Challenge</h2>
+                <p>Building enterprise-grade blockchain applications shouldn't require months of learning curve</p>
+            </div>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>Slow Development</h3>
+                    <p>Developers spend 80% of time on boilerplate code and setup instead of innovation</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Complex Integration</h3>
+                    <p>Hedera SDK complexity creates barriers for rapid prototyping and hackathon development</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Knowledge Gap</h3>
+                    <p>Limited blockchain expertise in Africa slows adoption of Web3 technologies</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Enterprise Readiness</h3>
+                    <p>Hackathon projects rarely meet production standards for real-world deployment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="solution" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>APIX AI: Your AI Development Partner</h2>
+                <p>Transform your ideas into production-ready Hedera applications with conversational AI</p>
+            </div>
+            
+            <div class="solution-showcase">
+                <div class="showcase-content">
+                    <div class="feature-tabs">
+                        <button class="tab-button active" data-tab="conversation">
+                            <i class="fas fa-comments"></i>
+                            Conversational AI
+                        </button>
+                        <button class="tab-button" data-tab="generation">
+                            <i class="fas fa-code"></i>
+                            Code Generation
+                        </button>
+                        <button class="tab-button" data-tab="validation">
+                            <i class="fas fa-shield-alt"></i>
+                            Live Validation
+                        </button>
+                        <button class="tab-button" data-tab="enterprise">
+                            <i class="fas fa-building"></i>
+                            Enterprise Ready
+                        </button>
+                    </div>
+                    
+                    <div class="tab-content active" id="conversation">
+                        <h3>Natural Language to Code</h3>
+                        <p>Simply describe your blockchain application in plain English, and APIX AI generates production-ready code with intelligent context understanding.</p>
+                        <div class="feature-highlights">
+                            <div class="highlight">Multi-language AI conversation</div>
+                            <div class="highlight">Context-aware responses</div>
+                            <div class="highlight">Iterative refinement</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="generation">
+                        <h3>Intelligent Code Composition</h3>
+                        <p>Advanced AI engine that understands Hedera best practices and generates optimized, secure, and scalable code patterns.</p>
+                        <div class="feature-highlights">
+                            <div class="highlight">Industry-specific templates</div>
+                            <div class="highlight">Real-time optimization</div>
+                            <div class="highlight">Custom pattern recognition</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="validation">
+                        <h3>Real-Time Blockchain Validation</h3>
+                        <p>Connect to live Hedera networks for instant validation, testing, and deployment of your applications.</p>
+                        <div class="feature-highlights">
+                            <div class="highlight">Live testnet integration</div>
+                            <div class="highlight">Automated testing</div>
+                            <div class="highlight">Performance monitoring</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="enterprise">
+                        <h3>Production-Grade Architecture</h3>
+                        <p>Built for scale with enterprise security, compliance templates, and deployment automation.</p>
+                        <div class="feature-highlights">
+                            <div class="highlight">Security by design</div>
+                            <div class="highlight">Compliance templates</div>
+                            <div class="highlight">Auto-deployment</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="showcase-visual">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="btn-close"></span>
+                                <span class="btn-minimize"></span>
+                                <span class="btn-maximize"></span>
+                            </div>
+                            <div class="terminal-title">APIX AI CLI</div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="prompt">$</span>
+                                <span class="command">apix chat</span>
+                            </div>
+                            <div class="terminal-line ai-response">
+                                <span class="ai-icon">🤖</span>
+                                <span>Hello! I'm APIX AI. How can I help you build on Hedera today?</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="prompt">></span>
+                                <span class="user-input">Create a DeFi lending platform for African farmers</span>
+                            </div>
+                            <div class="terminal-line ai-response">
+                                <span class="ai-icon">🤖</span>
+                                <span>Great idea! I'll generate a comprehensive lending platform with:</span>
+                            </div>
+                            <div class="terminal-line success">
+                                ✅ Smart contracts for collateral management
+                            </div>
+                            <div class="terminal-line success">
+                                ✅ Token economics for farming rewards
+                            </div>
+                            <div class="terminal-line success">
+                                ✅ React frontend with wallet integration
+                            </div>
+                            <div class="terminal-line success">
+                                ✅ Compliance templates for financial regulations
+                            </div>
+                            <div class="terminal-line">
+                                <span class="prompt">$</span>
+                                <span class="blinking-cursor">_</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demo Section -->
+    <section class="demo-section" id="demo">
+        <div class="container">
+            <div class="section-header">
+                <h2>See APIX AI in Action</h2>
+                <p>Watch how APIX AI transforms ideas into production-ready Hedera applications</p>
+            </div>
+            
+            <div class="demo-container">
+                <div class="demo-video">
+                    <div class="video-placeholder">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="video-overlay">
+                            <h3>5-Minute Demo</h3>
+                            <p>From idea to deployed DApp</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="demo-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Describe Your Vision</h4>
+                            <p>Tell APIX AI about your DApp idea in natural language</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>AI Generates Code</h4>
+                            <p>Watch as production-ready code is generated with industry best practices</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Deploy to Hedera</h4>
+                            <p>One-click deployment to Hedera testnet with live validation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hackathon Track -->
+    <section class="hackathon-track" id="tracks">
+        <div class="container">
+            <div class="section-header">
+                <h2>Competing in Track 4: AI & DePIN</h2>
+                <p>Building the future of decentralized AI infrastructure on Hedera</p>
+            </div>
+            
+            <div class="track-content">
+                <div class="track-info">
+                    <div class="track-badge">
+                        <span class="track-number">Track 4</span>
+                        <span class="track-name">AI & DePIN</span>
+                    </div>
+                    
+                    <h3>Why APIX AI is Perfect for This Track</h3>
+                    
+                    <div class="track-features">
+                        <div class="track-feature">
+                            <div class="feature-icon"></div>
+                            <div class="feature-content">
+                                <h4>AI Agents on Hedera</h4>
+                                <p>APIX AI itself is a sophisticated AI agent that helps developers build on Hedera, demonstrating the power of AI-blockchain integration</p>
+                            </div>
+                        </div>
+                        
+                        <div class="track-feature">
+                            <div class="feature-icon"></div>
+                            <div class="feature-content">
+                                <h4>Healthcare AI Solutions</h4>
+                                <p>Built-in pharmaceutical compliance templates and healthcare automation capabilities</p>
+                            </div>
+                        </div>
+                        
+                        <div class="track-feature">
+                            <div class="feature-icon"></div>
+                            <div class="feature-content">
+                                <h4>Local-Language Support</h4>
+                                <p>Conversational AI engine can be extended to support African languages for inclusive development</p>
+                            </div>
+                        </div>
+                        
+                        <div class="track-feature">
+                            <div class="feature-icon"></div>
+                            <div class="feature-content">
+                                <h4>DePIN Infrastructure</h4>
+                                <p>Enables rapid development of decentralized infrastructure applications with pre-built templates</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="impact-section">
+                    <h3>Impact for African Developers</h3>
+                    <div class="impact-grid">
+                        <div class="impact-card">
+                            <div class="impact-number">1000+</div>
+                            <div class="impact-label">Developers Empowered</div>
+                        </div>
+                        <div class="impact-card">
+                            <div class="impact-number">10x</div>
+                            <div class="impact-label">Development Speed</div>
+                        </div>
+                        <div class="impact-card">
+                            <div class="impact-number">50+</div>
+                            <div class="impact-label">Use Cases Covered</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture -->
+    <section class="architecture" id="architecture">
+        <div class="container">
+            <div class="section-header">
+                <h2>Enterprise-Grade Architecture</h2>
+                <p>Built for scale, security, and performance</p>
+            </div>
+            
+            <div class="architecture-diagram">
+                <div class="arch-layer">
+                    <h4>AI Layer</h4>
+                    <div class="arch-components">
+                        <div class="component">OpenAI GPT-4</div>
+                        <div class="component">Claude 3.5</div>
+                        <div class="component">Groq</div>
+                    </div>
+                </div>
+                
+                <div class="arch-layer">
+                    <h4>Application Layer</h4>
+                    <div class="arch-components">
+                        <div class="component">Conversation Engine</div>
+                        <div class="component">Code Composition</div>
+                        <div class="component">Template System</div>
+                    </div>
+                </div>
+                
+                <div class="arch-layer">
+                    <h4>Blockchain Layer</h4>
+                    <div class="arch-components">
+                        <div class="component">Hedera SDK</div>
+                        <div class="component">Agent Kit</div>
+                        <div class="component">Live Validation</div>
+                    </div>
+                </div>
+                
+                <div class="arch-layer">
+                    <h4>Infrastructure Layer</h4>
+                    <div class="arch-components">
+                        <div class="component">TypeScript</div>
+                        <div class="component">Node.js</div>
+                        <div class="component">Docker</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="architecture-features">
+                <div class="arch-feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Security First</h4>
+                    <p>End-to-end encryption, audit logging, and compliance frameworks</p>
+                </div>
+                <div class="arch-feature">
+                    <i class="fas fa-rocket"></i>
+                    <h4>Performance Optimized</h4>
+                    <p>Intelligent caching, rate limiting, and resource management</p>
+                </div>
+                <div class="arch-feature">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                    <h4>Highly Scalable</h4>
+                    <p>Microservices architecture ready for enterprise deployment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting Started -->
+    <section class="get-started" id="get-started">
+        <div class="container">
+            <div class="section-header">
+                <h2>Start Building with APIX AI</h2>
+                <p>Get up and running in less than 5 minutes</p>
+            </div>
+            
+            <div class="installation-steps">
+                <div class="step-card">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <h3>Install APIX AI</h3>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">bash</span>
+                            <button class="copy-button" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <pre><code>npm install -g apix-ai
+# or
+git clone https://github.com/your-repo/apix-ai
+cd apix-ai && npm install</code></pre>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <h3>Set Up Environment</h3>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">bash</span>
+                            <button class="copy-button" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <pre><code># Optional: For live blockchain operations
+export HEDERA_ACCOUNT_ID="0.0.xxxxx"
+export HEDERA_PRIVATE_KEY="302e020100..."
+export OPENAI_API_KEY="sk-..."</code></pre>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <h3>Start Creating</h3>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">bash</span>
+                            <button class="copy-button" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <pre><code># Interactive AI chat
+apix chat
+
+# Generate DeFi templates
+apix add hts --name "LendingToken" --symbol "LEND"
+
+# Create full application
+apix generate fintech-lending</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h3>Ready to revolutionize Hedera development?</h3>
+                    <p>Join the AI-powered blockchain development revolution</p>
+                    <div class="cta-buttons">
+                        <a href="https://github.com/your-repo/apix-ai" class="primary-button" target="_blank">
+                            <i class="fab fa-github"></i>
+                            View on GitHub
+                        </a>
+                        <a href="#" class="secondary-button" onclick="downloadDemo()">
+                            <i class="fas fa-download"></i>
+                            Download Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <div class="logo">
+                            <i class="fas fa-robot"></i>
+                            <span>APIX AI</span>
+                        </div>
+                        <p>Democratizing blockchain development with AI-powered tools for the African developer community.</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Hackathon</h4>
+                    <ul>
+                        <li><a href="#tracks">Track 4: AI & DePIN</a></li>
+                        <li><a href="#demo">Live Demo</a></li>
+                        <li><a href="https://hedera-africa-hackathon.com" target="_blank">Register</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#architecture">Documentation</a></li>
+                        <li><a href="https://github.com/your-repo/apix-ai" target="_blank">GitHub</a></li>
+                        <li><a href="#get-started">Get Started</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://twitter.com/apix_ai" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://discord.gg/apix-ai" target="_blank"><i class="fab fa-discord"></i></a>
+                        <a href="https://github.com/your-repo/apix-ai" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 APIX AI. Built for Hedera Africa Hackathon. Open source and community-driven.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

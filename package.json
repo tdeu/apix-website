@@ -1,0 +1,35 @@
+{
+  "name": "apix-ai-website",
+  "version": "1.0.0",
+  "description": "APIX AI - The world's first AI-powered Hedera development assistant. Competing in Hedera Africa Hackathon 2025 Track 4: AI & DePIN",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server --port=3000",
+    "build": "echo 'Static site - no build required'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "hedera",
+    "ai",
+    "blockchain",
+    "depin",
+    "hackathon",
+    "africa",
+    "development-tools"
+  ],
+  "author": "APIX AI Team",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-repo/apix-ai.git"
+  },
+  "homepage": "https://apix-ai.vercel.app",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
