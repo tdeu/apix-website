@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAnimations();
     initializeScrollEffects();
     initializeCopyButtons();
+    initializeHeroAnimation();
 });
 
 // Navigation functionality
@@ -322,6 +323,28 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {
     init();
+}
+
+// Hero title pixel-by-pixel animation
+function initializeHeroAnimation() {
+    const heroTitle = document.querySelector('.hero-title');
+
+    if (heroTitle) {
+        heroTitle.addEventListener('mousemove', function(e) {
+            const rect = heroTitle.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+            heroTitle.style.setProperty('--mouse-x', x + '%');
+            heroTitle.style.setProperty('--mouse-y', y + '%');
+        });
+
+        heroTitle.addEventListener('mouseleave', function() {
+            // Reset to center when mouse leaves
+            heroTitle.style.setProperty('--mouse-x', '50%');
+            heroTitle.style.setProperty('--mouse-y', '50%');
+        });
+    }
 }
 
 // Export functions for global access
