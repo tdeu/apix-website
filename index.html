@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APIX - Hedera integrations for Next.js</title>
-    <meta name="description" content="APIX is a CLI that adds working Hedera integrations (tokens, consensus, smart contracts, wallet) to a Next.js app, with generated code that builds and runs on testnet. v2.1.0: rebuilt and verified on Hedera testnet.">
+    <title>APIX - Hedera in your app. One command.</title>
+    <meta name="description" content="APIX is a CLI that writes working Hedera token, consensus, smart contract and wallet code into your app. Proven on Hedera testnet.">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -26,10 +26,9 @@
                 </div>
             </div>
             <div class="nav-menu">
-                <a href="#features" class="nav-link">Integrations</a>
-                <a href="#testnet" class="nav-link">Testnet proof</a>
-                <a href="#security" class="nav-link">Security</a>
-                <a href="#architecture" class="nav-link">Architecture</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#on-chain" class="nav-link">On-chain</a>
+                <a href="#get-started" class="nav-link">Quick start</a>
                 <!-- Shown only when SITE_STATE.REPO_PUBLIC is true (script.js) -->
                 <a href="https://github.com/0xfishbone/apix" class="nav-link" target="_blank" rel="noopener" data-requires-repo hidden>
                     <i class="fab fa-github"></i> GitHub
@@ -39,160 +38,93 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-background">
             <div class="grid-pattern"></div>
         </div>
 
         <div class="hero-content">
+            <!-- Text set from SITE_STATE.MAINNET_VERIFIED (script.js) -->
+            <div class="hero-badge" id="hero-badge">v2.1 · Proven on testnet · Mainnet next</div>
 
             <h1 class="hero-title">
-                <span class="hover-word">Working</span>
                 <span class="gradient-text hover-word">Hedera</span>
-                <span class="hover-word">integrations</span>
-                <span class="hover-word">for</span>
-                <span class="gradient-text hover-word">Next.js</span>
+                <span class="hover-word">in</span>
+                <span class="hover-word">your</span>
+                <span class="hover-word">app.</span>
+                <span class="hover-word">One</span>
+                <span class="hover-word">command.</span>
             </h1>
 
             <p class="hero-subtitle">
-                APIX is a CLI that adds Hedera integrations (tokens, consensus, smart contracts, wallet)
-                to a Next.js app, with generated code that builds and runs on testnet.
+                APIX writes working token, consensus, contract and wallet code into your app. It builds. It runs on testnet.
             </p>
-            <p class="hero-version">v2.1.0: rebuilt and verified on Hedera testnet.</p>
+
+            <div class="code-block hero-install">
+                <div class="code-header">
+                    <span class="code-language">bash</span>
+                    <!-- Shown only when SITE_STATE.RELEASE_PENDING is false (script.js) -->
+                    <span class="version-badge" data-show-when="released" hidden>v2.1.0</span>
+                    <button type="button" class="copy-button" onclick="copyCode(this)" aria-label="Copy code">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                <pre><code>npm install -g apix-ai</code></pre>
+            </div>
+            <!-- Shown only when SITE_STATE.RELEASE_PENDING is true (script.js) -->
+            <p class="release-line" data-show-when="release-pending">v2.1.0 release pending: the current npm version is 2.0.3.</p>
 
             <div class="hero-actions">
-                <!-- TODO: add a "Watch the demo" button once a video of 2.1.0 is recorded.
-                     The previous "Watch Live Demo" button pointed to a placeholder of the hackathon build. -->
+                <!-- TODO: add a "Watch the demo" button once a video of 2.1.0 is recorded. -->
                 <button type="button" class="primary-button" onclick="scrollToSection('get-started')">
-                    <i class="fas fa-download"></i>
+                    <i class="fas fa-rocket"></i>
                     Get started
                 </button>
-                <button type="button" class="secondary-button" onclick="scrollToSection('testnet')">
-                    <i class="fas fa-check-circle"></i>
-                    See the testnet proof
+                <button type="button" class="secondary-button" onclick="scrollToSection('on-chain')">
+                    <i class="fas fa-link"></i>
+                    See it on-chain
                 </button>
             </div>
-
-            <div class="hero-tech-stack">
-                <span class="tech-label">Powered by:</span>
-                <div class="tech-logos">
-                    <div class="tech-item">
-                        <span class="tech-mark">ℏ</span>
-                        <span>Hedera</span>
-                    </div>
-                    <div class="tech-item">
-                        <span class="tech-mark">TS</span>
-                        <span>TypeScript</span>
-                    </div>
-                    <div class="tech-item">
-                        <span class="tech-mark">N</span>
-                        <span>Next.js</span>
-                    </div>
-                    <div class="tech-item">
-                        <i class="fas fa-robot"></i>
-                        <span>Anthropic Claude / OpenAI (optional AI features)</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- Problem Statement -->
-    <section class="problem-statement">
-        <div class="container">
-            <div class="section-header">
-                <h2>Adding Hedera to an app takes time</h2>
-                <p>Wiring Hedera into a web app takes time and specialist knowledge</p>
-            </div>
-
-            <div class="problem-grid">
-                <div class="problem-card">
-                    <h3>Several services to learn</h3>
-                    <p>Tokens, consensus topics and smart contracts each have their own transactions and SDK calls</p>
-                </div>
-                <div class="problem-card">
-                    <h3>Keys must stay on the server</h3>
-                    <p>The operator key signs transactions, so it has to be kept out of browser code</p>
-                </div>
-                <div class="problem-card">
-                    <h3>Boilerplate before anything works</h3>
-                    <p>Client setup, API routes, input checks, hooks and UI all come before the first transaction</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Integrations -->
+    <!-- One command per feature -->
     <section class="solution" id="features">
         <div class="container">
             <div class="section-header">
-                <h2>Four integrations, one command each</h2>
-                <p><code>apix add &lt;integration&gt;</code> writes the files into your project and installs their packages</p>
+                <h2>One command per feature</h2>
+                <p>Pick what you need. APIX writes the code and installs the packages.</p>
             </div>
 
-            <div class="solution-showcase">
-                <div class="showcase-content">
-                    <div class="feature-tabs">
-                        <button type="button" class="tab-button active" data-tab="hts">
-                            <i class="fas fa-coins"></i>
-                            hts
-                        </button>
-                        <button type="button" class="tab-button" data-tab="consensus">
-                            <i class="fas fa-stream"></i>
-                            consensus
-                        </button>
-                        <button type="button" class="tab-button" data-tab="smart-contract">
-                            <i class="fas fa-file-code"></i>
-                            smart-contract
-                        </button>
-                        <button type="button" class="tab-button" data-tab="wallet">
-                            <i class="fas fa-wallet"></i>
-                            wallet
-                        </button>
-                    </div>
-
-                    <div class="tab-content active" id="hts">
-                        <h3>Hedera Token Service</h3>
-                        <p><code>apix add hts</code> generates 14 files: a server-side Hedera client, an <code>htsManager</code> module, four API routes, React hooks and components.</p>
-                        <div class="feature-highlights">
-                            <div class="highlight">Routes: POST /api/tokens/create, GET /api/tokens/info, POST /api/tokens/mint, POST /api/tokens/transfer</div>
-                            <div class="highlight">Hooks: useTokens, useWallet</div>
-                            <div class="highlight">Components: TokenManager, TransactionStatus (with HashScan link), UI primitives</div>
-                        </div>
-                    </div>
-
-                    <div class="tab-content" id="consensus">
-                        <h3>Hedera Consensus Service</h3>
-                        <p><code>apix add consensus</code> (alias <code>hcs</code>) generates a <code>consensusManager</code> module and two API routes, with input checks.</p>
-                        <div class="feature-highlights">
-                            <div class="highlight">POST /api/consensus/topics: create a topic</div>
-                            <div class="highlight">POST /api/consensus/messages: submit a message</div>
-                            <div class="highlight">Messages up to 1024 bytes, memos up to 100 bytes (HTTP 400 otherwise)</div>
-                        </div>
-                    </div>
-
-                    <div class="tab-content" id="smart-contract">
-                        <h3>Smart contracts</h3>
-                        <p><code>apix add smart-contract</code> (alias <code>contract</code>) generates a <code>smartContractManager</code> module that you call from your own server code. No routes.</p>
-                        <div class="feature-highlights">
-                            <div class="highlight">deployContract: deploys Solidity bytecode (ContractCreateFlow)</div>
-                            <div class="highlight">executeContract: calls a function (ContractExecuteTransaction)</div>
-                            <div class="highlight">callContract: reads a view function (ContractCallQuery)</div>
-                        </div>
-                    </div>
-
-                    <div class="tab-content" id="wallet">
-                        <h3>Wallet</h3>
-                        <p><code>apix add wallet</code> generates browser code to connect HashPack or Blade through their browser extensions. The connected wallet is displayed and can be used as a transfer recipient; it never signs.</p>
-                        <div class="feature-highlights">
-                            <div class="highlight">walletService with HashPack and Blade adapters</div>
-                            <div class="highlight">useWallet hook and ConnectWallet component</div>
-                            <div class="highlight">The browser wallet flow has not been tested end to end on testnet yet</div>
-                        </div>
-                    </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-coins"></i>
+                    <h3>Tokens</h3>
+                    <code>apix add hts</code>
+                    <p>Create, mint and transfer tokens through ready-made API routes.</p>
                 </div>
+                <div class="feature-card">
+                    <i class="fas fa-stream"></i>
+                    <h3>Consensus</h3>
+                    <code>apix add consensus</code>
+                    <p>Write ordered, timestamped messages to an HCS topic.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-file-code"></i>
+                    <h3>Smart contracts</h3>
+                    <code>apix add smart-contract</code>
+                    <p>Deploy Solidity and call it from your server code.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-wallet"></i>
+                    <h3>Wallet</h3>
+                    <code>apix add wallet</code>
+                    <p>Connect HashPack or Blade from the browser.</p>
+                </div>
+            </div>
 
+            <div class="solution-showcase showcase-compact">
                 <div class="showcase-visual">
                     <div class="terminal-window">
                         <div class="terminal-header">
@@ -201,311 +133,97 @@
                                 <span class="btn-minimize"></span>
                                 <span class="btn-maximize"></span>
                             </div>
-                            <div class="terminal-title">apix create-token (testnet run)</div>
+                            <div class="terminal-title">real testnet run (trimmed)</div>
                         </div>
-                        <!-- Real output, copied from the APIX repo: docs/TESTNET_PROOF.md, section 2 -->
+                        <!-- Real output lines, copied from the APIX repo: docs/TESTNET_PROOF.md, section 2 -->
                         <div class="terminal-body">
-                            <div class="terminal-line">
-                                <span class="prompt">$</span>
-                                <span class="command">apix create-token --name "APIX CLI Proof" --symbol APIXC --decimals 2 --supply 500000 --admin-key --supply-key</span>
-                            </div>
-                            <div class="terminal-line">Token Details:</div>
-                            <div class="terminal-line">&nbsp;&nbsp;&nbsp;Name: APIX CLI Proof</div>
-                            <div class="terminal-line">&nbsp;&nbsp;&nbsp;Symbol: APIXC</div>
-                            <div class="terminal-line">&nbsp;&nbsp;&nbsp;Decimals: 2</div>
+                            <div class="terminal-line"><span class="prompt">$</span><span class="command">apix create-token --name "APIX CLI Proof" --symbol APIXC --decimals 2 --supply 500000 --admin-key --supply-key</span></div>
                             <div class="terminal-line">&nbsp;&nbsp;&nbsp;Initial Supply: 500,000 smallest units (5,000.00 tokens)</div>
                             <div class="terminal-line">&nbsp;&nbsp;&nbsp;Supply Type: INFINITE</div>
                             <div class="terminal-line">&nbsp;&nbsp;&nbsp;Keys (operator key): admin, supply</div>
                             <div class="terminal-line">&nbsp;&nbsp;&nbsp;Network: TESTNET</div>
                             <div class="terminal-line success">✔ ✅ Token created successfully!</div>
-                            <div class="terminal-line">Token Information:</div>
                             <div class="terminal-line">&nbsp;&nbsp;&nbsp;Token ID: 0.0.10782464</div>
-                            <div class="terminal-line">&nbsp;&nbsp;&nbsp;Transaction ID: 0.0.10780747@1790716393.105341414</div>
-                            <div class="terminal-line">&nbsp;&nbsp;&nbsp;Treasury Account: 0.0.10780747</div>
                             <div class="terminal-line">&nbsp;&nbsp;&nbsp;Token on HashScan: https://hashscan.io/testnet/token/0.0.10782464</div>
-                            <div class="terminal-line">&nbsp;&nbsp;&nbsp;Transaction on HashScan: https://hashscan.io/testnet/transaction/0.0.10780747-1790716393-105341414</div>
                         </div>
                     </div>
+                </div>
+
+                <div class="showcase-content">
+                    <h3 class="get-title">What <code>apix add hts</code> gives you</h3>
+                    <ul class="get-list">
+                        <li><i class="fas fa-route"></i><span><strong>API routes</strong> for create, info, mint and transfer</span></li>
+                        <li><i class="fab fa-react"></i><span><strong>React hooks &amp; UI</strong> that call them, with HashScan links</span></li>
+                        <li><i class="fas fa-server"></i><span><strong>A server-side client</strong> that reads your key from the environment</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Verified on testnet -->
-    <section class="demo-section" id="testnet">
+    <!-- Proven on-chain -->
+    <section class="demo-section" id="on-chain">
         <div class="container">
             <div class="section-header">
-                <h2>Verified on testnet</h2>
-                <p>Every Hedera operation APIX performs or generates was run on testnet and read back from the mirror node</p>
+                <h2>Proven on-chain</h2>
+                <p>Tokens, topics and contracts created by APIX and its generated code. Real IDs. Check for yourself.</p>
             </div>
 
-            <div class="proof-grid">
+            <!-- Mainnet cards are appended here from MAINNET_PROOF when SITE_STATE.MAINNET_VERIFIED is true (script.js) -->
+            <div class="proof-grid" id="proof-strip">
                 <a class="proof-card" href="https://hashscan.io/testnet/token/0.0.10783823" target="_blank" rel="noopener">
-                    <div class="proof-kind">Token</div>
+                    <div class="proof-kind">Token · testnet</div>
                     <div class="proof-id">0.0.10783823</div>
-                    <p>Created, minted and transferred</p>
-                    <span class="proof-link">HashScan <i class="fas fa-external-link-alt"></i></span>
+                    <span class="proof-link">Created, minted, transferred <i class="fas fa-external-link-alt"></i></span>
                 </a>
                 <a class="proof-card" href="https://hashscan.io/testnet/topic/0.0.10783825" target="_blank" rel="noopener">
-                    <div class="proof-kind">Topic</div>
+                    <div class="proof-kind">Topic · testnet</div>
                     <div class="proof-id">0.0.10783825</div>
-                    <p>Created, with 2 messages submitted</p>
-                    <span class="proof-link">HashScan <i class="fas fa-external-link-alt"></i></span>
+                    <span class="proof-link">2 messages <i class="fas fa-external-link-alt"></i></span>
                 </a>
                 <a class="proof-card" href="https://hashscan.io/testnet/contract/0.0.10783827" target="_blank" rel="noopener">
-                    <div class="proof-kind">Contract</div>
+                    <div class="proof-kind">Contract · testnet</div>
                     <div class="proof-id">0.0.10783827</div>
-                    <p>Deployed, <code>set</code> called, <code>get</code> read the same value back</p>
-                    <span class="proof-link">HashScan <i class="fas fa-external-link-alt"></i></span>
+                    <span class="proof-link">Deployed, set, get <i class="fas fa-external-link-alt"></i></span>
                 </a>
                 <a class="proof-card" href="https://hashscan.io/testnet/token/0.0.10782464" target="_blank" rel="noopener">
-                    <div class="proof-kind">Token (CLI)</div>
+                    <div class="proof-kind">Token via CLI · testnet</div>
                     <div class="proof-id">0.0.10782464</div>
-                    <p>Created by <code>apix create-token</code>, with admin and supply keys</p>
-                    <span class="proof-link">HashScan <i class="fas fa-external-link-alt"></i></span>
+                    <span class="proof-link">apix create-token <i class="fas fa-external-link-alt"></i></span>
                 </a>
-            </div>
-
-            <div class="demo-container">
-                <div class="demo-steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>Run on testnet</h4>
-                            <p>APIX's own Hedera layer, the <code>apix create-token</code> command and generated Next.js apps all submitted real transactions</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>Read back from the mirror node</h4>
-                            <p>Each result was checked on the mirror node: status, supply, balances, message contents, contract state</p>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>No success without an ID</h4>
-                            <p>APIX reports success only with an ID from the network's receipt. There is no simulation mode and no mock data</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="fees-card">
-                    <h3>Observed testnet fees</h3>
-                    <div class="fee-row">
-                        <span>Token create</span>
-                        <span class="fee-value">≈ 13 ℏ</span>
-                    </div>
-                    <div class="fee-row">
-                        <span>Contract deploy</span>
-                        <span class="fee-value">≈ 15 ℏ</span>
-                    </div>
-                    <p>Testnet HBAR, which the faucet provides for free. Fees vary: they are set in USD and depend on the HBAR price and each transaction's options.</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Security -->
+    <!-- Built safe by default -->
     <section class="architecture" id="security">
         <div class="container">
             <div class="section-header">
-                <h2>Security</h2>
-                <p>What APIX and its generated code do with your keys and your HBAR</p>
+                <h2>Built safe by default</h2>
             </div>
 
-            <div class="architecture-features">
-                <div class="arch-feature">
-                    <i class="fas fa-server"></i>
-                    <h4>Keys stay server-side</h4>
-                    <p>Generated Hedera modules start with <code>import 'server-only'</code>, so importing them from client code fails the build. Credentials are never <code>NEXT_PUBLIC_</code></p>
-                </div>
-                <div class="arch-feature">
-                    <i class="fas fa-eye-slash"></i>
-                    <h4>Secrets masked</h4>
-                    <p>Secrets are masked in console output, log files and error messages</p>
-                </div>
-                <div class="arch-feature">
-                    <i class="fas fa-check-double"></i>
-                    <h4>Input validation</h4>
-                    <p>Hedera inputs are validated before any transaction is sent</p>
-                </div>
-                <div class="arch-feature">
-                    <i class="fas fa-hand-paper"></i>
-                    <h4>Mainnet confirmation</h4>
-                    <p>On mainnet, commands that spend HBAR ask for confirmation first, or need <code>--yes</code></p>
-                </div>
-                <div class="arch-feature">
-                    <i class="fas fa-box"></i>
-                    <h4>Dependencies</h4>
-                    <p>0 critical and 0 high <code>npm audit</code> advisories in production dependencies</p>
-                </div>
-                <div class="arch-feature">
-                    <i class="fas fa-vial"></i>
-                    <h4>Tested</h4>
-                    <p>246 automated tests, all passing</p>
-                </div>
-            </div>
+            <ul class="safe-list">
+                <li><i class="fas fa-lock"></i><span><strong>Keys never touch the browser.</strong> Hedera modules are server-only; a client import fails the build.</span></li>
+                <li><i class="fas fa-eye-slash"></i><span><strong>Secrets stay masked</strong> in console output, logs and errors.</span></li>
+                <li><i class="fas fa-hand-paper"></i><span><strong>Mainnet spends ask first.</strong> The CLI won't spend real HBAR without a yes.</span></li>
+                <li><i class="fas fa-vial"></i><span><strong>246 tests, 0 high or critical advisories</strong> in production dependencies.</span></li>
+            </ul>
         </div>
     </section>
 
-    <!-- AI features -->
-    <section class="hackathon-track" id="ai">
-        <div class="container">
-            <div class="section-header">
-                <h2>Optional AI features</h2>
-                <p>Everything above works without an AI key. These commands need an Anthropic or OpenAI key</p>
-            </div>
-
-            <div class="track-content">
-                <div class="track-info">
-                    <div class="track-features">
-                        <div class="track-feature">
-                            <div class="feature-icon"></div>
-                            <div class="feature-content">
-                                <h4>Learn and decide</h4>
-                                <p><code>apix explain</code>, <code>apix compare</code>, <code>apix recommend</code> and <code>apix confidence</code> explain Hedera concepts and help you choose an integration</p>
-                            </div>
-                        </div>
-
-                        <div class="track-feature">
-                            <div class="feature-icon"></div>
-                            <div class="feature-content">
-                                <h4>Generate</h4>
-                                <p><code>apix generate</code> classifies your requirement with the AI, then writes the same files as <code>apix add</code></p>
-                            </div>
-                        </div>
-
-                        <div class="track-feature">
-                            <div class="feature-icon"></div>
-                            <div class="feature-content">
-                                <h4>Chat and debug</h4>
-                                <p><code>apix chat</code> is a conversation about your Hedera project. <code>apix debug</code> diagnoses an issue and suggests what to try; it never changes anything</p>
-                            </div>
-                        </div>
-
-                        <div class="track-feature">
-                            <div class="feature-icon"></div>
-                            <div class="feature-content">
-                                <h4>Experimental: compose</h4>
-                                <p><code>apix compose --experimental</code> lists the files it composed, without writing them. It is hidden from <code>--help</code> by default</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="impact-section">
-                    <h3>How the provider is chosen</h3>
-                    <div class="impact-grid">
-                        <div class="impact-card">
-                            <div class="impact-label">Anthropic is used when <code>ANTHROPIC_API_KEY</code> is set, otherwise OpenAI when <code>OPENAI_API_KEY</code> is set.</div>
-                        </div>
-                        <div class="impact-card">
-                            <div class="impact-label">Without a key, the AI commands exit with a message saying which key to set. There are no canned replies.</div>
-                        </div>
-                        <div class="impact-card">
-                            <div class="impact-label">OpenAI support has not been verified with a live key yet.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Architecture -->
-    <section class="architecture" id="architecture">
-        <div class="container">
-            <div class="section-header">
-                <h2>How it works</h2>
-                <p>From <code>apix add</code> to a transaction on Hedera</p>
-            </div>
-
-            <div class="architecture-diagram">
-                <div class="arch-layer">
-                    <h4>APIX CLI</h4>
-                    <div class="arch-components">
-                        <div class="component">apix add hts</div>
-                    </div>
-                </div>
-                <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
-                <div class="arch-layer">
-                    <h4>Project analyzer</h4>
-                    <div class="arch-components">
-                        <div class="component">Framework and layout</div>
-                        <div class="component">Support check: unsupported projects are refused, unchanged</div>
-                    </div>
-                </div>
-                <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
-                <div class="arch-layer">
-                    <h4>Planner and templates</h4>
-                    <div class="arch-components">
-                        <div class="component">Integration planner</div>
-                        <div class="component">Handlebars templates</div>
-                        <div class="component">No overwrite without --force, rollback on failure</div>
-                    </div>
-                </div>
-                <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
-                <div class="arch-layer">
-                    <h4>Generated Next.js code</h4>
-                    <div class="arch-components">
-                        <div class="component">React hooks and components</div>
-                        <div class="component">API routes (server-only)</div>
-                        <div class="component">Hedera SDK client (operator key)</div>
-                    </div>
-                </div>
-                <div class="flow-arrow"><i class="fas fa-arrow-down"></i></div>
-                <div class="arch-layer">
-                    <h4>Hedera</h4>
-                    <div class="arch-components">
-                        <div class="component">Signed transactions via the Hedera SDK</div>
-                        <div class="component">Mirror node and HashScan for verification</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-header support-header">
-                <h2>What's supported</h2>
-            </div>
-            <div class="architecture-features">
-                <div class="arch-feature">
-                    <i class="fas fa-check"></i>
-                    <h4>Supported</h4>
-                    <p>Next.js App Router + TypeScript: <code>hts</code>, <code>consensus</code>, <code>smart-contract</code>, <code>wallet</code></p>
-                </div>
-                <div class="arch-feature">
-                    <i class="fas fa-flask"></i>
-                    <h4>Experimental</h4>
-                    <p><code>wallet</code> on React/Vite + TypeScript</p>
-                </div>
-                <div class="arch-feature">
-                    <i class="fas fa-hourglass-half"></i>
-                    <h4>Not yet</h4>
-                    <p>Token association, wallet-signed transfers, Pages Router routes, JavaScript projects. Mainnet has not been verified yet</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Getting Started -->
+    <!-- Quick start -->
     <section class="get-started" id="get-started">
         <div class="container">
             <div class="section-header">
-                <h2>Installation and quick start</h2>
-                <p>Measured once on a laptop: about 4 minutes from <code>apix add hts</code> to a successful <code>next build</code>, plus the app's own <code>npm install</code></p>
-            </div>
-
-            <!-- Shown only when SITE_STATE.RELEASE_PENDING is true (script.js) -->
-            <div class="release-notice" data-show-when="release-pending">
-                <i class="fas fa-info-circle"></i>
-                v2.1.0 release pending: the current npm version is 2.0.3.
+                <h2>Quick start</h2>
+                <p>About 4 minutes from <code>apix add hts</code> to a successful build (measured on a laptop).</p>
             </div>
 
             <div class="installation-steps">
                 <div class="step-card">
                     <div class="step-header">
                         <span class="step-number">1</span>
-                        <h3>Install APIX</h3>
+                        <h3>Install</h3>
                     </div>
                     <div class="code-block">
                         <div class="code-header">
@@ -518,28 +236,25 @@
                         </div>
                         <pre><code>npm install -g apix-ai</code></pre>
                     </div>
+                    <!-- Shown only when SITE_STATE.RELEASE_PENDING is true (script.js) -->
+                    <p class="step-note" data-show-when="release-pending">v2.1.0 release pending: the current npm version is 2.0.3.</p>
                 </div>
 
                 <div class="step-card">
                     <div class="step-header">
                         <span class="step-number">2</span>
-                        <h3>Set up a testnet account</h3>
+                        <h3>Add a free testnet account (<a href="https://portal.hedera.com/faucet" target="_blank" rel="noopener">portal.hedera.com</a>)</h3>
                     </div>
-                    <p class="step-note">Get a free testnet account (account ID and DER-encoded private key) at <a href="https://portal.hedera.com/faucet" target="_blank" rel="noopener">portal.hedera.com</a>. Keep these server-side, never <code>NEXT_PUBLIC_</code>.</p>
                     <div class="code-block">
                         <div class="code-header">
-                            <span class="code-language">.env</span>
+                            <span class="code-language">.env.local</span>
                             <button type="button" class="copy-button" onclick="copyCode(this)" aria-label="Copy code">
                                 <i class="fas fa-copy"></i>
                             </button>
                         </div>
                         <pre><code>HEDERA_NETWORK=testnet
 HEDERA_ACCOUNT_ID=0.0.xxxxx
-HEDERA_PRIVATE_KEY=302e...
-
-# Optional, for the AI commands
-ANTHROPIC_API_KEY=...
-OPENAI_API_KEY=...</code></pre>
+HEDERA_PRIVATE_KEY=302e...</code></pre>
                     </div>
                 </div>
 
@@ -548,7 +263,6 @@ OPENAI_API_KEY=...</code></pre>
                         <span class="step-number">3</span>
                         <h3>Add Hedera to your app</h3>
                     </div>
-                    <p class="step-note">In a Next.js (App Router, TypeScript) project:</p>
                     <div class="code-block">
                         <div class="code-header">
                             <span class="code-language">bash</span>
@@ -556,9 +270,7 @@ OPENAI_API_KEY=...</code></pre>
                                 <i class="fas fa-copy"></i>
                             </button>
                         </div>
-                        <pre><code>apix analyze
-apix add hts
-npm run dev</code></pre>
+                        <pre><code>apix add hts</code></pre>
                     </div>
                 </div>
             </div>
@@ -568,46 +280,14 @@ npm run dev</code></pre>
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-brand">
-                        <div class="logo">
-                            <i class="fas fa-terminal"></i>
-                            <span>APIX</span>
-                        </div>
-                        <p>A CLI that adds working Hedera integrations to a Next.js app. Built at the Hedera Africa Hackathon 2025.</p>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Product</h4>
-                    <ul>
-                        <li><a href="#features">Integrations</a></li>
-                        <li><a href="#ai">AI features</a></li>
-                        <li><a href="#architecture">How it works</a></li>
-                        <li><a href="#get-started">Get started</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Evidence</h4>
-                    <ul>
-                        <li><a href="#testnet">Testnet proof</a></li>
-                        <li><a href="#security">Security</a></li>
-                        <li data-requires-repo hidden><a href="https://github.com/0xfishbone/apix" target="_blank" rel="noopener">GitHub repository</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section" data-requires-repo hidden>
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="https://github.com/0xfishbone/apix" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
+            <div class="footer-lines">
+                <p><i class="fas fa-robot"></i> Optional AI helpers: explain, chat, recommend. Bring your Anthropic or OpenAI key.</p>
+                <p class="footer-roadmap">Roadmap: token association, wallet-signed transfers, mainnet.</p>
+                <p data-requires-repo hidden><a href="https://github.com/0xfishbone/apix" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub repository</a></p>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2026 Emtée Studio. APIX is MIT licensed.</p>
+                <p>&copy; 2026 Emtée Studio. Built at the Hedera Africa Hackathon 2025.</p>
             </div>
         </div>
     </footer>

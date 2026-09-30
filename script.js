@@ -4,13 +4,70 @@
 // - RELEASE_PENDING: true while npm still serves 2.0.3. Shows the "release pending"
 //   notice in the install section and hides the v2.1.0 badge on the install command.
 // - REPO_PUBLIC: false while the APIX repository is private. Hides every GitHub link.
+// - MAINNET_VERIFIED: false until APIX has been proven on mainnet. When true, the hero
+//   badge says "Live on Hedera mainnet" and MAINNET_PROOF is added to the on-chain strip.
 const SITE_STATE = {
     RELEASE_PENDING: true,
-    REPO_PUBLIC: false
+    REPO_PUBLIC: false,
+    MAINNET_VERIFIED: false
 };
+
+// TODO: fill in with real, mirror-verified mainnet IDs before setting MAINNET_VERIFIED to true.
+// kind: 'token' | 'topic' | 'contract' (HashScan path), label: card title, caption: one line.
+// Example shape: { kind: 'token', id: '0.0.XXXXX', label: 'Token', caption: 'Created, minted, transferred' }
+const MAINNET_PROOF = [
+];
+
+const HERO_BADGE = {
+    testnet: 'v2.1 · Proven on testnet · Mainnet next',
+    mainnet: 'v2.1 · Live on Hedera mainnet'
+};
+
+// Append one HashScan card per mainnet ID to the on-chain strip
+function renderMainnetProof() {
+    const strip = document.getElementById('proof-strip');
+    if (!strip) return;
+    if (MAINNET_PROOF.length === 0) {
+        console.warn('MAINNET_VERIFIED is true but MAINNET_PROOF is empty');
+        return;
+    }
+    MAINNET_PROOF.forEach(entry => {
+        const card = document.createElement('a');
+        card.className = 'proof-card';
+        card.href = `https://hashscan.io/mainnet/${entry.kind}/${entry.id}`;
+        card.target = '_blank';
+        card.rel = 'noopener';
+
+        const kind = document.createElement('div');
+        kind.className = 'proof-kind';
+        kind.textContent = `${entry.label} · mainnet`;
+
+        const id = document.createElement('div');
+        id.className = 'proof-id';
+        id.textContent = entry.id;
+
+        const caption = document.createElement('span');
+        caption.className = 'proof-link';
+        caption.textContent = entry.caption + ' ';
+        const icon = document.createElement('i');
+        icon.className = 'fas fa-external-link-alt';
+        caption.appendChild(icon);
+
+        card.append(kind, id, caption);
+        strip.appendChild(card);
+    });
+}
 
 // Show or hide the elements that depend on SITE_STATE
 function applySiteState() {
+    const badge = document.getElementById('hero-badge');
+    if (badge) {
+        badge.textContent = SITE_STATE.MAINNET_VERIFIED ? HERO_BADGE.mainnet : HERO_BADGE.testnet;
+    }
+    if (SITE_STATE.MAINNET_VERIFIED) {
+        renderMainnetProof();
+    }
+
     document.querySelectorAll('[data-requires-repo]').forEach(el => {
         el.hidden = !SITE_STATE.REPO_PUBLIC;
     });
@@ -247,10 +304,10 @@ function initializeTerminalAnimation() {
 
 // Keyboard shortcuts
 document.addEventListener('keydown', function(e) {
-    // Press 'T' for the testnet proof
+    // Press 'T' for the on-chain proof
     if (e.key === 't' || e.key === 'T') {
         if (!e.ctrlKey && !e.metaKey && !e.altKey) {
-            scrollToSection('testnet');
+            scrollToSection('on-chain');
         }
     }
     
