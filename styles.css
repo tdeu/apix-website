@@ -1,4 +1,4 @@
-/* APIX AI - Hackathon Website Styles */
+/* APIX - Website Styles */
 
 /* Reset and Base Styles */
 * {
@@ -1481,7 +1481,7 @@ body {
     box-shadow: var(--shadow-xl);
 }
 
-/* Enterprise stats styling */
+/* Stats styling */
 .hero-stats {
     flex-wrap: wrap;
     justify-content: center;
@@ -1613,4 +1613,265 @@ body {
     .social-links {
         justify-content: center;
     }
+}
+/* ===== APIX 2.1 content additions (same tokens as above) ===== */
+
+/* Elements toggled by SITE_STATE in script.js */
+[hidden] {
+    display: none !important;
+}
+
+/* Inline code in prose */
+.section-header code,
+.tab-content code,
+.step-content code,
+.proof-card code,
+.arch-feature code,
+.feature-content code,
+.impact-label code,
+.step-note code {
+    font-family: var(--font-mono);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0 var(--space-xs);
+    border-radius: var(--radius-sm);
+    font-size: 0.9em;
+}
+
+.hero-version {
+    font-size: 1rem;
+    color: var(--white);
+    margin: calc(-1 * var(--space-xl)) auto var(--space-2xl);
+    animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.tech-mark {
+    font-size: 1.6rem !important;
+    font-weight: 800;
+    line-height: 32px;
+    height: 32px;
+    color: var(--white) !important;
+    opacity: 0.8;
+}
+
+/* Integration list items: no bullets were used before, keep them readable */
+.highlight {
+    padding-left: var(--space-md);
+    border-left: 2px solid var(--gray-700);
+}
+
+/* Real CLI output can contain long URLs */
+.terminal-body {
+    font-size: 0.8rem;
+    overflow-wrap: anywhere;
+}
+
+.terminal-line {
+    margin-bottom: var(--space-xs);
+    min-width: 0;
+}
+
+.terminal-line > span {
+    min-width: 0;
+}
+
+/* Verified on testnet */
+.proof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-3xl);
+    position: relative;
+    z-index: 10;
+}
+
+.proof-card {
+    display: block;
+    background: var(--gray-900);
+    border: 1px solid var(--gray-700);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    color: var(--white);
+    text-decoration: none;
+    transition: var(--transition-normal);
+}
+
+.proof-card:hover {
+    border-color: var(--white);
+    transform: translateY(-5px);
+}
+
+.proof-kind {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gray-400);
+    margin-bottom: var(--space-sm);
+}
+
+.proof-id {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: var(--space-sm);
+}
+
+.proof-card p {
+    color: var(--gray-300);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-md);
+}
+
+.proof-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.fees-card {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-700);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+}
+
+.fees-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: var(--space-lg);
+}
+
+.fee-row {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--gray-700);
+}
+
+.fee-value {
+    font-weight: 800;
+}
+
+.fees-card p {
+    color: var(--gray-400);
+    font-size: 0.8rem;
+    margin-top: var(--space-md);
+}
+
+/* Architecture flow */
+.architecture-diagram {
+    gap: var(--space-sm);
+}
+
+.flow-arrow {
+    text-align: center;
+    color: var(--gray-400);
+    font-size: 1.2rem;
+}
+
+.support-header {
+    margin-bottom: var(--space-xl);
+}
+
+/* Install section */
+.release-notice {
+    position: relative;
+    z-index: 10;
+    max-width: 700px;
+    margin: 0 auto var(--space-2xl);
+    padding: var(--space-md) var(--space-lg);
+    border: 1px solid var(--white);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    font-weight: 600;
+}
+
+.release-notice i {
+    margin-right: var(--space-sm);
+}
+
+.version-badge {
+    margin-left: auto;
+    margin-right: var(--space-sm);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0 var(--space-sm);
+    border: 1px solid var(--gray-500);
+    border-radius: var(--radius-sm);
+    color: var(--gray-300);
+}
+
+.step-note {
+    padding: var(--space-md) var(--space-xl) 0;
+    color: var(--gray-300);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-md);
+}
+
+.step-note a {
+    color: var(--white);
+}
+
+@media (max-width: 768px) {
+    .architecture-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Let grid columns shrink below their content width (long CLI output) */
+.solution-showcase > *,
+.demo-container > *,
+.track-content > * {
+    min-width: 0;
+}
+
+@media (max-width: 768px) {
+    /* No room for the section links on phones: keep the brand and the CTA */
+    .nav-menu .nav-link {
+        display: none;
+    }
+
+    .demo-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* The animated background grids move 50px sideways; keep them inside their section */
+section,
+footer {
+    overflow-x: clip;
+}
+
+/* --primary is black: icons and terminal accents need a light colour on dark cards */
+.nav-brand .logo i,
+.footer-brand .logo i,
+.arch-feature i {
+    color: var(--white);
+}
+
+.terminal-body .prompt,
+.terminal-body .success {
+    color: var(--gray-300);
+}
+
+.terminal-body .success {
+    font-weight: 700;
+}
+
+.section-header code,
+.tab-content code,
+.step-content code,
+.proof-card code,
+.arch-feature code,
+.feature-content code,
+.impact-label code,
+.step-note code {
+    white-space: nowrap;
+}
+
+/* Block lines wrap long URLs reliably on narrow screens */
+.terminal-body .terminal-line {
+    display: block;
+}
+
+.terminal-body .prompt {
+    margin-right: var(--space-sm);
 }

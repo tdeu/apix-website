@@ -1,7 +1,30 @@
-// APIX AI - Hackathon Website JavaScript
+// APIX - Website JavaScript
+
+// Release-state switches. Flip these when the state changes:
+// - RELEASE_PENDING: true while npm still serves 2.0.3. Shows the "release pending"
+//   notice in the install section and hides the v2.1.0 badge on the install command.
+// - REPO_PUBLIC: false while the APIX repository is private. Hides every GitHub link.
+const SITE_STATE = {
+    RELEASE_PENDING: true,
+    REPO_PUBLIC: false
+};
+
+// Show or hide the elements that depend on SITE_STATE
+function applySiteState() {
+    document.querySelectorAll('[data-requires-repo]').forEach(el => {
+        el.hidden = !SITE_STATE.REPO_PUBLIC;
+    });
+    document.querySelectorAll('[data-show-when="release-pending"]').forEach(el => {
+        el.hidden = !SITE_STATE.RELEASE_PENDING;
+    });
+    document.querySelectorAll('[data-show-when="released"]').forEach(el => {
+        el.hidden = SITE_STATE.RELEASE_PENDING;
+    });
+}
 
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
+    applySiteState();
     initializeNavigation();
     initializeFeatureTabs();
     initializeAnimations();
@@ -208,18 +231,6 @@ function copyCode(button) {
     }
 }
 
-// Video demo functionality
-function playDemo() {
-    // In a real implementation, this would open a video modal or navigate to a demo
-    alert('Demo video would play here! In the actual implementation, this would show a video demonstration of APIX AI in action.');
-}
-
-// Download demo functionality
-function downloadDemo() {
-    // In a real implementation, this would trigger a download
-    alert('Demo download would start here! In the actual implementation, this would download a demo version or provide installation instructions.');
-}
-
 // Terminal typing animation
 function initializeTerminalAnimation() {
     const terminalLines = document.querySelectorAll('.terminal-line');
@@ -236,10 +247,10 @@ function initializeTerminalAnimation() {
 
 // Keyboard shortcuts
 document.addEventListener('keydown', function(e) {
-    // Press 'D' for demo
-    if (e.key === 'd' || e.key === 'D') {
+    // Press 'T' for the testnet proof
+    if (e.key === 't' || e.key === 'T') {
         if (!e.ctrlKey && !e.metaKey && !e.altKey) {
-            scrollToSection('demo');
+            scrollToSection('testnet');
         }
     }
     
@@ -350,5 +361,3 @@ function initializeHeroAnimation() {
 // Export functions for global access
 window.scrollToSection = scrollToSection;
 window.copyCode = copyCode;
-window.playDemo = playDemo;
-window.downloadDemo = downloadDemo;
