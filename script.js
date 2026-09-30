@@ -9,7 +9,7 @@
 const SITE_STATE = {
     RELEASE_PENDING: true,
     REPO_PUBLIC: false,
-    MAINNET_VERIFIED: false
+    MAINNET_VERIFIED: true
 };
 
 // TODO: fill in with real, mirror-verified mainnet IDs before setting MAINNET_VERIFIED to true.
@@ -20,7 +20,7 @@ const MAINNET_PROOF = [
 
 const HERO_BADGE = {
     testnet: 'v2.1 · Proven on testnet · Mainnet next',
-    mainnet: 'v2.1 · Live on Hedera mainnet'
+    mainnet: 'v2.1 beta · Live on Hedera mainnet'
 };
 
 // Append one HashScan card per mainnet ID to the on-chain strip
