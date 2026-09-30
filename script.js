@@ -7,7 +7,7 @@
 // - MAINNET_VERIFIED: false until APIX has been proven on mainnet. When true, the hero
 //   badge says "Live on Hedera mainnet" and MAINNET_PROOF is added to the on-chain strip.
 const SITE_STATE = {
-    RELEASE_PENDING: true,
+    RELEASE_PENDING: false,
     REPO_PUBLIC: false,
     MAINNET_VERIFIED: true
 };
