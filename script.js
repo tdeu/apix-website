@@ -1,15 +1,15 @@
 // APIX - Website JavaScript
 
 // Release-state switches. Flip these when the state changes:
-// - RELEASE_PENDING: true while npm still serves 2.0.3. Shows the "release pending"
-//   notice in the install section and hides the v2.1.0 badge on the install command.
+// - RELEASE_PENDING: true while the current version is not on npm yet. Shows the "release pending"
+//   notice in the install section and hides the v2.1.1 badge on the install command.
 // - REPO_PUBLIC: false while the APIX repository is private. Hides every GitHub link.
 // - MAINNET_VERIFIED: false until APIX has been proven on mainnet. When true, the hero
 //   badge says "Live on Hedera mainnet" and MAINNET_PROOF is added to the on-chain strip.
 const SITE_STATE = {
     RELEASE_PENDING: false,
-    REPO_PUBLIC: false,
-    MAINNET_VERIFIED: true
+    REPO_PUBLIC: true,
+    MAINNET_VERIFIED: false
 };
 
 // TODO: fill in with real, mirror-verified mainnet IDs before setting MAINNET_VERIFIED to true.
@@ -20,7 +20,7 @@ const MAINNET_PROOF = [
 
 const HERO_BADGE = {
     testnet: 'v2.1 · Proven on testnet · Mainnet next',
-    mainnet: 'v2.1 beta · Live on Hedera mainnet'
+    mainnet: 'v2.1 · Live on Hedera mainnet'
 };
 
 // Append one HashScan card per mainnet ID to the on-chain strip

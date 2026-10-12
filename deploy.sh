@@ -144,7 +144,7 @@ create_package() {
     
     # Create timestamp for unique filename
     timestamp=$(date +"%Y%m%d_%H%M%S")
-    package_name="apix-ai-website_${timestamp}.zip"
+    package_name="apix-website_${timestamp}.zip"
     
     # Create zip package excluding unnecessary files
     zip -r "$package_name" . -x "*.git*" "*.DS_Store" "deploy.sh" "node_modules/*" "*.log"
@@ -222,7 +222,7 @@ setup_development() {
         echo "Creating package.json..."
         cat > package.json << EOF
 {
-  "name": "apix-ai-hackathon-website",
+  "name": "apix-hackathon-website",
   "version": "1.0.0",
   "description": "APIX AI hackathon website for Hedera Africa Hackathon 2025",
   "main": "index.html",
