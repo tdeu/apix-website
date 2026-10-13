@@ -5,7 +5,7 @@
 //   notice in the install section and hides the v2.1.2 badge on the install command.
 // - REPO_PUBLIC: false while the APIX repository is private. Hides every GitHub link.
 // - MAINNET_VERIFIED: false until APIX has been proven on mainnet. When true, the hero
-//   badge says "Live on Hedera mainnet" and MAINNET_PROOF is shown first in the on-chain strip.
+//   badge says "Verified on Hedera mainnet" and MAINNET_PROOF is shown first in the on-chain strip.
 const SITE_STATE = {
     RELEASE_PENDING: false,
     REPO_PUBLIC: true,
@@ -22,7 +22,7 @@ const MAINNET_PROOF = [
 
 const HERO_BADGE = {
     testnet: 'v2.1 · Proven on testnet · Mainnet next',
-    mainnet: 'v2.1.2 · Live on Hedera mainnet'
+    mainnet: 'v2.1.2 · Verified on Hedera mainnet'
 };
 
 // Put one HashScan card per mainnet ID at the start of the on-chain strip, before the testnet cards

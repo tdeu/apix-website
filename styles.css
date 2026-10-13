@@ -2044,6 +2044,7 @@ footer {
     color: var(--gray-300);
 }
 
+.proof-note,
 .proof-docs {
     margin-top: var(--space-lg);
     text-align: center;
