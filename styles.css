@@ -2044,6 +2044,20 @@ footer {
     color: var(--gray-300);
 }
 
+.proof-note,
+.proof-docs {
+    margin-top: var(--space-lg);
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--gray-300);
+    position: relative;
+    z-index: 10;
+}
+
+.proof-docs a {
+    color: var(--white);
+}
+
 /* Quick start */
 .step-header {
     padding: var(--space-md) var(--space-lg);

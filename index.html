@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APIX - Hedera in your app. One command.</title>
-    <meta name="description" content="APIX is a CLI that writes working Hedera token, consensus, smart contract and wallet code into your app. Proven on Hedera testnet.">
+    <meta name="description" content="APIX is a CLI that writes working Hedera token, consensus, smart contract and wallet code into your app. Proven on Hedera testnet and mainnet.">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -45,8 +45,8 @@
         </div>
 
         <div class="hero-content">
-            <!-- Text set from SITE_STATE.MAINNET_VERIFIED (script.js) -->
-            <div class="hero-badge" id="hero-badge">v2.1 · Proven on testnet · Mainnet next</div>
+            <!-- Text set from SITE_STATE.MAINNET_VERIFIED and MAINNET_PROOF (script.js) -->
+            <div class="hero-badge" id="hero-badge">v2.1.2 · Verified on Hedera mainnet</div>
 
             <h1 class="hero-title">
                 <span class="gradient-text hover-word">Hedera</span>
@@ -58,7 +58,7 @@
             </h1>
 
             <p class="hero-subtitle">
-                APIX writes working token, consensus, contract and wallet code into your app. It builds. It runs on testnet.
+                APIX writes working token, consensus, contract and wallet code into your app. It builds. Proven on Hedera testnet and mainnet.
             </p>
 
             <div class="code-block hero-install">
@@ -169,7 +169,7 @@
                 <p>Tokens, topics and contracts created by APIX and its generated code. Real IDs. Check for yourself.</p>
             </div>
 
-            <!-- Mainnet cards are appended here from MAINNET_PROOF when SITE_STATE.MAINNET_VERIFIED is true (script.js) -->
+            <!-- Mainnet cards are inserted first from MAINNET_PROOF when SITE_STATE.MAINNET_VERIFIED is true (script.js) -->
             <div class="proof-grid" id="proof-strip">
                 <a class="proof-card" href="https://hashscan.io/testnet/token/0.0.10783823" target="_blank" rel="noopener">
                     <div class="proof-kind">Token · testnet</div>
@@ -192,6 +192,9 @@
                     <span class="proof-link">apix create-token <i class="fas fa-external-link-alt"></i></span>
                 </a>
             </div>
+            <p class="proof-note">Mainnet: APIX's Hedera operations. Testnet: the full flow, including generated apps.</p>
+            <!-- Shown only when SITE_STATE.REPO_PUBLIC is true (script.js) -->
+            <p class="proof-docs" data-requires-repo hidden>Evidence: <a href="https://github.com/tdeu/apix/blob/master/docs/MAINNET_PROOF.md" target="_blank" rel="noopener">Mainnet proof</a> · <a href="https://github.com/tdeu/apix/blob/master/docs/TESTNET_PROOF.md" target="_blank" rel="noopener">Testnet proof</a></p>
         </div>
     </section>
 
@@ -282,7 +285,7 @@ HEDERA_PRIVATE_KEY=302e...</code></pre>
         <div class="container">
             <div class="footer-lines">
                 <p><i class="fas fa-robot"></i> Optional AI helpers: explain, chat, recommend. Bring your Anthropic or OpenAI key.</p>
-                <p class="footer-roadmap">Roadmap: token association, wallet-signed transfers, mainnet.</p>
+                <p class="footer-roadmap">Roadmap: token association, wallet-signed transfers.</p>
                 <p data-requires-repo hidden><a href="https://github.com/tdeu/apix" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub repository</a> · <a href="https://github.com/tdeu/apix/releases" target="_blank" rel="noopener">Releases</a> · <a href="https://www.npmjs.com/package/apix-hedera" target="_blank" rel="noopener"><i class="fab fa-npm"></i> apix-hedera on npm</a></p>
             </div>
 

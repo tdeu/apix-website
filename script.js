@@ -5,25 +5,27 @@
 //   notice in the install section and hides the v2.1.2 badge on the install command.
 // - REPO_PUBLIC: false while the APIX repository is private. Hides every GitHub link.
 // - MAINNET_VERIFIED: false until APIX has been proven on mainnet. When true, the hero
-//   badge says "Live on Hedera mainnet" and MAINNET_PROOF is added to the on-chain strip.
+//   badge says "Verified on Hedera mainnet" and MAINNET_PROOF is shown first in the on-chain strip.
 const SITE_STATE = {
     RELEASE_PENDING: false,
     REPO_PUBLIC: true,
-    MAINNET_VERIFIED: false
+    MAINNET_VERIFIED: true
 };
 
-// TODO: fill in with real, mirror-verified mainnet IDs before setting MAINNET_VERIFIED to true.
+// Real, mirror-verified mainnet IDs. Keep at least one entry while MAINNET_VERIFIED is true:
+// with an empty list the hero badge falls back to the testnet wording.
 // kind: 'token' | 'topic' | 'contract' (HashScan path), label: card title, caption: one line.
-// Example shape: { kind: 'token', id: '0.0.XXXXX', label: 'Token', caption: 'Created, minted, transferred' }
 const MAINNET_PROOF = [
+    { kind: 'token', id: '0.0.10917503', label: 'Token', caption: 'Created, minted' },
+    { kind: 'topic', id: '0.0.10917504', label: 'Topic', caption: '1 message' }
 ];
 
 const HERO_BADGE = {
     testnet: 'v2.1 · Proven on testnet · Mainnet next',
-    mainnet: 'v2.1 · Live on Hedera mainnet'
+    mainnet: 'v2.1.2 · Verified on Hedera mainnet'
 };
 
-// Append one HashScan card per mainnet ID to the on-chain strip
+// Put one HashScan card per mainnet ID at the start of the on-chain strip, before the testnet cards
 function renderMainnetProof() {
     const strip = document.getElementById('proof-strip');
     if (!strip) return;
@@ -31,6 +33,7 @@ function renderMainnetProof() {
         console.warn('MAINNET_VERIFIED is true but MAINNET_PROOF is empty');
         return;
     }
+    const firstTestnetCard = strip.firstElementChild;
     MAINNET_PROOF.forEach(entry => {
         const card = document.createElement('a');
         card.className = 'proof-card';
@@ -54,7 +57,7 @@ function renderMainnetProof() {
         caption.appendChild(icon);
 
         card.append(kind, id, caption);
-        strip.appendChild(card);
+        strip.insertBefore(card, firstTestnetCard);
     });
 }
 
@@ -62,7 +65,8 @@ function renderMainnetProof() {
 function applySiteState() {
     const badge = document.getElementById('hero-badge');
     if (badge) {
-        badge.textContent = SITE_STATE.MAINNET_VERIFIED ? HERO_BADGE.mainnet : HERO_BADGE.testnet;
+        const mainnetProven = SITE_STATE.MAINNET_VERIFIED && MAINNET_PROOF.length > 0;
+        badge.textContent = mainnetProven ? HERO_BADGE.mainnet : HERO_BADGE.testnet;
     }
     if (SITE_STATE.MAINNET_VERIFIED) {
         renderMainnetProof();
