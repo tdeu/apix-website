@@ -2,7 +2,7 @@
 
 // Release-state switches. Flip these when the state changes:
 // - RELEASE_PENDING: true while the current version is not on npm yet. Shows the "release pending"
-//   notice in the install section and hides the v2.1.1 badge on the install command.
+//   notice in the install section and hides the v2.1.2 badge on the install command.
 // - REPO_PUBLIC: false while the APIX repository is private. Hides every GitHub link.
 // - MAINNET_VERIFIED: false until APIX has been proven on mainnet. When true, the hero
 //   badge says "Live on Hedera mainnet" and MAINNET_PROOF is added to the on-chain strip.
